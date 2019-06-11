@@ -1,22 +1,16 @@
 <?php
     use yii\helpers\Html;
     use yii\widgets\LinkPager;
+    use yii\helpers\Url;
 ?>
 <h1>Produkty</h1>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Category</th> 
-    <th>Count</th>
-    <th>Description</th>
-  </tr>
+<div style="display: flex; flex-direction: row; height: 100%; justify-content: flex-start; flex-wrap: wrap;">
   <?php foreach ($products as $product): ?>
-    <tr>
-        <td><?= Html::encode("{$product->name}") ?></td>
-        <td><?= Html::encode("{$product->category}") ?></td> 
-        <td><?= Html::encode("{$product->count}") ?></td>
-        <td><?= Html::encode("{$product->description}") ?></td>
-    </tr>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 20px;">
+        <?= Html::tag('img', NULL, ['src' => "https://picsum.photos/150?random={$product->name}"]) ?>
+        <span><?= Html::encode("{$product->name}") ?></span>
+        <span><?= Html::encode("{$product->category}") ?></span>
+    </div>
   <?php endforeach; ?>
-</table>
+</div>
 <?= LinkPager::widget(['pagination' => $pagination]) ?>
