@@ -8,6 +8,8 @@ use yii\data\Pagination;
 
 use app\models\Product;
 
+use yii\helpers\Url;
+
 class ProductController extends Controller
 {
     public function actionIndex() {
@@ -25,5 +27,9 @@ class ProductController extends Controller
             'products' => $products,
             'pagination' => $pagination,
         ]);
+    }
+
+    public function actionSearchFunction($name) {
+        return $this->redirect(['single-product/index', 'name' => $name]);
     }
 }

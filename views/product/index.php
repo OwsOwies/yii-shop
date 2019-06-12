@@ -10,6 +10,9 @@
         <?= Html::tag('img', NULL, ['src' => "https://picsum.photos/150?random={$product->name}"]) ?>
         <span><?= Html::encode("{$product->name}") ?></span>
         <span><?= Html::encode("{$product->category}") ?></span>
+        <div>
+          <?= Html::a('Szczegóły', ['search-function', 'name' => $product->name]) ?>
+        </div>
     </div>
   <?php endforeach; ?>
 </div>
