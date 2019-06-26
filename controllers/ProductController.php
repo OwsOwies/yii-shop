@@ -48,6 +48,7 @@ class ProductController extends Controller
         }
         echo 'success';
         echo $product->name;
+        return $this->redirect(['/product/index']);
     }
 
     public function actionRemoveFromCart($name) {
