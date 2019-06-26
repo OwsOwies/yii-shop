@@ -1,3 +1,3 @@
 <?php
-    echo 'SUCCESSS';
+    echo 'YOU SUCCESSSFULLY ORDERED';
 ?>

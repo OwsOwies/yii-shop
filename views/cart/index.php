@@ -5,8 +5,6 @@ use yii\grid\GridView;
 use yii\helpers\Url;;
 use app\models\Product;
 
-$this->title = "Cart";
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="product-index">
@@ -21,7 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <thead class="thead-light">
                 <tr>
                     <th>Name</th>
-                    <th>Category</th> 
                     <th>Count</th>
                     <th>Price per unit</th>
                     <th>Total Price</th>
@@ -39,10 +36,9 @@ $this->params['breadcrumbs'][] = $this->title;
             }
             echo "<tr>
                     <td>$product->name</td>
-                    <td>$product->category</td>
                     <td>".$cart->getItem($val)->getQuantity()."</td>
-                    <td>$product->price EUR</td>
-                    <td>".$cart->getItem($val)->getCost()." EUR</td>
+                    <td>$product->price PLN</td>
+                    <td>".$cart->getItem($val)->getCost()." PLN</td>
                     <td>
                         <button class=\"removeFromCart btn btn-danger\" data-key=\"$product->name\">Remove</button>
                     </td>
@@ -51,12 +47,12 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
     </table>
 
-    <h2> Total: <?php echo $cart->getTotalCost(); echo " EUR";?> </h2>
+    <h2> Total: <?php echo $cart->getTotalCost(); echo " PLN";?> </h2>
 
     <?php 
         if ($cart->getTotalCount() > 0)
         {
-            echo '<button class="PayWithPayU" type="submit" style="float: right; border: 0px; height: 50px; width: 290px; background: url(\'http://static.payu.com/pl/standard/partners/buttons/payu_account_button_long_03.png\'); cursor: pointer;"></button>';
+            echo '<button class="payButton" type="submit" style="float: right; border: 0px; height: 50px; width: 290px; background: url(\'http://static.payu.com/pl/standard/partners/buttons/payu_account_button_long_03.png\'); cursor: pointer;"></button>';
         }
     ?>
     
@@ -66,18 +62,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $script = <<< JS
 
-$('.PayWithPayU').on("click", function(){
+$('.payButton').on("click", function(){
     $.ajax({
         type: "get",
-        url: "/cart/pay",
-        
-        success: function(result) {
-            console.log(result);
+        url: "/cart/order",
+        success: function() {
+            console.log('success');
         }, 
-        error: function(result) {
+        error: function() {
             console.log('error');
         } 
-        
     });
 
 });

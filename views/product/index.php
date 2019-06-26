@@ -19,7 +19,7 @@
         </div>
         <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; margin-top: 10px; margin-bottom: 10px;">
           <div>
-            <div><?= Html::encode("Price: {$product->price} EUR") ?></div>
+            <div><?= Html::encode("Price: {$product->price} PLN") ?></div>
             <div><?= Html::encode("In stock: {$product->count}") ?></div>
             <?= Html::input('number', 'qty', 0, ['step' => 1, 'min' => 0, 'max' => $product->count, 'class' => "qty form-control {$product->name}", 'data-key' => $product->name]) ?>
           </div>
