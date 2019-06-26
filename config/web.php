@@ -43,14 +43,25 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        'cart' => [
+            'class' => 'devanych\cart\Cart',
+            'storageClass' => 'devanych\cart\storage\SessionStorage',
+            'calculatorClass' => 'devanych\cart\calculators\SimpleCalculator',
+            'params' => [
+                'key' => 'cart',
+                'expire' => 604800,
+                'productClass' => 'app\models\Product',
+                'productFieldId' => 'name',
+                'productFieldPrice' => 'price',
+            ],
+        ],
     ],
     'params' => $params,
 ];
